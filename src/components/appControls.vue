@@ -14,32 +14,30 @@
 																			})"
 			></i>			
 		</div>
+		
 		<div class="controls-info">
-			<img class="controls-info-img" :src="tracks[currentElemId].img" alt="">
+			<img class="controls-info-img" :src="tracks[currentElemId].img" alt="">			
 			<div class="controls-info-names" v-if="currentElemId != null">
 				<p class="controls-info-names-track">{{ tracks[currentElemId].name }}</p>
 				<p class="controls-info-names-artist">{{ tracks[currentElemId].artist }}</p>
 			</div>
-			<div class="controls-info-time_wrapper" id="time" @click="changeTrackTime">
-				<div class="controls-info-time_wrapper-time">
-					<div class="controls-info-time_wrapper-time-progress" id="time_progress"></div>	
-					<div class="controls-info-time_wrapper-time-number">
-						<span>{{ minutes }}</span> :
-						<span>{{ bigSeconds }}</span>
-						<span>{{ littleSeconds }}</span>
-					</div>
-				</div>
-				<div class="controls-info-time_wrapper-runner">
-					123
-				</div>						
-			</div>
 		</div>
-		
-		
+				
 		<div class="controls-volume_wrapper" id="volume" @click="changeVolume">
 			<div class="controls-volume_wrapper-volume">
 				<div class="controls-volume_wrapper-volume-progress" id="volume_progress"></div>
 			</div>			
+		</div>
+
+		<div class="controls-info-time_wrapper" id="time" @click="changeTrackTime">
+			<div class="controls-info-time_wrapper-time">
+				<div class="controls-info-time_wrapper-time-progress" id="time_progress"></div>	
+				<div class="controls-info-time_wrapper-time-number">
+					<span>{{ minutes }}</span> :
+					<span>{{ bigSeconds }}</span>
+					<span>{{ littleSeconds }}</span>
+				</div>
+			</div>						
 		</div>
 	</div>
 </template>
@@ -114,19 +112,28 @@
 <style lang="sass">
 	.controls
 		display: flex
-		position: absolute
 		bottom: 0px
-		padding: 30px 10px 15px
-		width: 100%		
-		background-color: rgba(38, 43, 85, 0.3)
+		left: 0px
+		padding: 5px 15px 5px
+		width: 100%	
+		box-sizing: border-box
+		background-color: rgba(38, 43, 85, 1)
 		flex-direction: row
 		justify-content: space-between
-		align-items: flex-end
+		align-items: center
+		position: relative
+		&:hover
+			.controls-info-time_wrapper
+				height: 18px
+				top: -18px
+				&-time
+					&-number
+						opacity: 1
 		audio
 			display: none
 		&-btn
 			display: inline-flex
-			width: 15%
+			width: 8%
 			justify-content: space-between
 			i
 				font-size: 20px
@@ -134,30 +141,33 @@
 				color: rgba(255, 255, 255, 0.7)
 				&:hover
 					cursor: pointer
+		
 		&-info
-			width: 60%
-			display: inline-block
+			width: 75%
+			display: inline-flex
 			position: relative
-			padding-left: 80px
 			&-img
-				position: absolute
-				height: 100%
-				left: 0px
-				top: 0px
+				height: 60px
+				margin-right: 10px
 			&-names
+				display: flex
+				align-items: center
+				flex-direction: row
+				align-content: center
+				flex-wrap: wrap
 				&-track, &-artist
+					display: flex
 					margin: 0px
 					color: rgba(255, 255, 255, 0.9)
 					font-size: 14px
+					width: 100%
 				&-track
 					font-weight: 600
 					font-size: 14px
 					margin-bottom: 5px
-		&-info-time_wrapper, &-volume_wrapper
+		&-volume_wrapper
 			width: 100%
-			padding: 5px 0px 15px 0px
-			position: relative
-			bottom: -13px
+			padding: 15px 0px 15px 0px
 			&-runner
 				position: absolute
 				bottom: -15px
@@ -178,9 +188,8 @@
 					border
 					background-color: red
 					top: -4px
-					left: 18px
-			
-			&-time, &-volume
+					left: 18px			
+			&-volume
 				border-radius: 7px
 				height: 3px
 				background-color: rgba(255, 255, 255, 0.8)
@@ -198,26 +207,41 @@
 					display: inline-block
 					height: 100%
 		&-volume_wrapper
+			position: relative
 			width: 10%
 			display: inline-flex
-			&-volume-progress
-				width: 100%
-		&-info-time_wrapper
 			&:hover
 				cursor: pointer
-				.controls-info-time_wrapper-runner
-					opacity: 1				
+			&-volume-progress
+				width: 100%
+		&-info-time_wrapper	
+			width: 100%
+			position: absolute
+			height: 5px
+			transition: all 0.4s
+			background-color: rgba(255,255,255,0.2)
+			top: -5px
+			left: 0px
+			&:hover
+				cursor: pointer		
 			&-time
 				position: relative
+				height: 100%
+				&-progress
+					height: 100%
+					width: 0%
+					background-color: rgba(255,216,0,0.6)
 				&-number
 					position: absolute
 					width: 35px
-					right: -35px
+					right: 5px
+					display: flex
+					opacity: 0
+					transition: all 0.3s
 					top: 0px
 					color: rgba(255, 255, 255, 0.7)
 					margin-right: 5px
 					font-size: 12px
-					display: flex
 					height: 100%
 					align-items: center
 					justify-content: flex-end

@@ -6,8 +6,11 @@
 				elem: $refs.audio_item
 			})" 
 	>		
-		<span class="audio_item-artist">{{ artist }}</span> -
-		<span class="audio_item-track">{{ name }}</span>
+		<img :src="img" class="audio_item-img" alt="">
+		<p class="audio_item-names">
+			<span class="audio_item-names-track">{{ name }}</span>
+			<span class="audio_item-names-artist">{{ artist }}</span>			
+		</p>		
 		<span class="audio_item-time">{{ time }}</span>
 	</div>
 </template>
@@ -32,6 +35,9 @@
 			},
 			time: {
 				type: String
+			},
+			img: {
+				type: String
 			}
 		},
 		computed: {
@@ -49,21 +55,37 @@
 
 <style lang="sass" scoped>
 	.audio_item
-		color: rgba(0, 0, 0, 0.7)
-		padding: 5px 15px
-		background-color: rgba(255, 255, 255, 0.7)
-		transition: all 0.4s
+		color: rgba(255, 255, 255, 0.7)
+		padding: 6px 15px
+		background-color: transparent
+		transition: all 0s
 		border-radius: 4px
 		margin-bottom: 3px
-		audio
-			display: none
+		display: flex
+		align-items: center
+		position: relative
+		user-select: none
+		font-size: 12px
+		width: 100%
+		&-img
+			width: 45px
 		&-time
-			float: right
-		span
-			user-select: none
+			position: absolute
+			right: 15px
+		&-names
+			display: flex
+			flex-direction: row
+			flex-wrap: wrap
+			margin: 0px
+			&-artist, &-track			
+				width: 100%
+				margin-left: 10px
+			&-track
+				font-weight: 600
 		&:hover
 			cursor: pointer
 	.active-audio_item
-		background-color: #fff
+		transition: all 0.4s
+		background-color: rgba(0, 0, 0, 0.2)
 
 </style>

@@ -29,6 +29,111 @@ export default {
 				name: 'bury a friend',
 				time: '03:13',
 				img: 'https://sun9-29.userapi.com/c855124/v855124720/1054a/WvkYIUsZyvg.jpg'
+			},
+			{
+				artist: 'Billie Eilish',
+				url: 'https://muzlo.me/get/music/20190202/muzlome_Billie_Eilish_-_bury_a_friend_61822134.mp3',
+				name: 'bury a friend',
+				time: '03:13',
+				img: 'https://sun9-29.userapi.com/c855124/v855124720/1054a/WvkYIUsZyvg.jpg'
+			},
+			{
+				artist: 'Billie Eilish',
+				url: 'https://muzlo.me/get/music/20190202/muzlome_Billie_Eilish_-_bury_a_friend_61822134.mp3',
+				name: 'bury a friend',
+				time: '03:13',
+				img: 'https://sun9-29.userapi.com/c855124/v855124720/1054a/WvkYIUsZyvg.jpg'
+			},
+			{
+				artist: 'Billie Eilish',
+				url: 'https://muzlo.me/get/music/20190202/muzlome_Billie_Eilish_-_bury_a_friend_61822134.mp3',
+				name: 'bury a friend',
+				time: '03:13',
+				img: 'https://sun9-29.userapi.com/c855124/v855124720/1054a/WvkYIUsZyvg.jpg'
+			},
+			{
+				artist: 'Billie Eilish',
+				url: 'https://muzlo.me/get/music/20190202/muzlome_Billie_Eilish_-_bury_a_friend_61822134.mp3',
+				name: 'bury a friend',
+				time: '03:13',
+				img: 'https://sun9-29.userapi.com/c855124/v855124720/1054a/WvkYIUsZyvg.jpg'
+			},
+			{
+				artist: 'Billie Eilish',
+				url: 'https://muzlo.me/get/music/20190202/muzlome_Billie_Eilish_-_bury_a_friend_61822134.mp3',
+				name: 'bury a friend',
+				time: '03:13',
+				img: 'https://sun9-29.userapi.com/c855124/v855124720/1054a/WvkYIUsZyvg.jpg'
+			},
+			{
+				artist: 'Billie Eilish',
+				url: 'https://muzlo.me/get/music/20190202/muzlome_Billie_Eilish_-_bury_a_friend_61822134.mp3',
+				name: 'bury a friend',
+				time: '03:13',
+				img: 'https://sun9-29.userapi.com/c855124/v855124720/1054a/WvkYIUsZyvg.jpg'
+			},
+			{
+				artist: 'Billie Eilish',
+				url: 'https://muzlo.me/get/music/20190202/muzlome_Billie_Eilish_-_bury_a_friend_61822134.mp3',
+				name: 'bury a friend',
+				time: '03:13',
+				img: 'https://sun9-29.userapi.com/c855124/v855124720/1054a/WvkYIUsZyvg.jpg'
+			},
+			{
+				artist: 'Billie Eilish',
+				url: 'https://muzlo.me/get/music/20190202/muzlome_Billie_Eilish_-_bury_a_friend_61822134.mp3',
+				name: 'bury a friend',
+				time: '03:13',
+				img: 'https://sun9-29.userapi.com/c855124/v855124720/1054a/WvkYIUsZyvg.jpg'
+			},
+			{
+				artist: 'Billie Eilish',
+				url: 'https://muzlo.me/get/music/20190202/muzlome_Billie_Eilish_-_bury_a_friend_61822134.mp3',
+				name: 'bury a friend',
+				time: '03:13',
+				img: 'https://sun9-29.userapi.com/c855124/v855124720/1054a/WvkYIUsZyvg.jpg'
+			},
+			{
+				artist: 'Billie Eilish',
+				url: 'https://muzlo.me/get/music/20190202/muzlome_Billie_Eilish_-_bury_a_friend_61822134.mp3',
+				name: 'bury a friend',
+				time: '03:13',
+				img: 'https://sun9-29.userapi.com/c855124/v855124720/1054a/WvkYIUsZyvg.jpg'
+			},
+			{
+				artist: 'Billie Eilish',
+				url: 'https://muzlo.me/get/music/20190202/muzlome_Billie_Eilish_-_bury_a_friend_61822134.mp3',
+				name: 'bury a friend',
+				time: '03:13',
+				img: 'https://sun9-29.userapi.com/c855124/v855124720/1054a/WvkYIUsZyvg.jpg'
+			},
+			{
+				artist: 'Billie Eilish',
+				url: 'https://muzlo.me/get/music/20190202/muzlome_Billie_Eilish_-_bury_a_friend_61822134.mp3',
+				name: 'bury a friend',
+				time: '03:13',
+				img: 'https://sun9-29.userapi.com/c855124/v855124720/1054a/WvkYIUsZyvg.jpg'
+			},
+			{
+				artist: 'Billie Eilish',
+				url: 'https://muzlo.me/get/music/20190202/muzlome_Billie_Eilish_-_bury_a_friend_61822134.mp3',
+				name: 'bury a friend',
+				time: '03:13',
+				img: 'https://sun9-29.userapi.com/c855124/v855124720/1054a/WvkYIUsZyvg.jpg'
+			},
+			{
+				artist: 'Billie Eilish',
+				url: 'https://muzlo.me/get/music/20190202/muzlome_Billie_Eilish_-_bury_a_friend_61822134.mp3',
+				name: 'bury a friend',
+				time: '03:13',
+				img: 'https://sun9-29.userapi.com/c855124/v855124720/1054a/WvkYIUsZyvg.jpg'
+			},
+			{
+				artist: 'Billie Eilish',
+				url: 'https://muzlo.me/get/music/20190202/muzlome_Billie_Eilish_-_bury_a_friend_61822134.mp3',
+				name: 'bury a friend',
+				time: '03:13',
+				img: 'https://sun9-29.userapi.com/c855124/v855124720/1054a/WvkYIUsZyvg.jpg'
 			}
 		],
 		currentElemId: 0,
