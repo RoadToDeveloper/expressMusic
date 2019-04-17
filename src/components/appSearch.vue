@@ -1,14 +1,26 @@
 <template>
-	<input type="search" placeholder="Введите имя исполнителя или название песни">
+	<div>
+		<input @input="changeSearchValue($event.target.value)" type="search" placeholder="Введите имя исполнителя или название песни">
+	</div>
+	
 </template>
 
 <script>
-	
+	import {mapMutations} from 'vuex'
+
+	export default {
+		methods: {
+			...mapMutations('tracks', {
+				changeSearchValue: 'changeSearchValue'
+			})
+		}
+	}
 </script>
 
 <style lang="sass" scoped>
 	input
 		width: 100%
+		margin-top: 50px
 		border-radius: 15px
 		padding: 10px 15px
 		border: none		

@@ -1,5 +1,11 @@
 <template>
-	<div class="audio_item" @click="playTrack">		
+	<div 	class="audio_item" ref="audio_item" 
+			v-if="artist.toLowerCase().indexOf(searchValue) != -1 || name.toLowerCase().indexOf(searchValue) != -1"
+			@click="playTrack({
+				url: url,
+				elem: $refs.audio_item
+			})" 
+	>		
 		<span class="audio_item-artist">{{ artist }}</span> -
 		<span class="audio_item-track">{{ name }}</span>
 		<span class="audio_item-time">{{ time }}</span>
@@ -7,10 +13,13 @@
 </template>
 
 <script>
-	import {mapMutations} from 'vuex'
+	import {mapActions} from 'vuex'
 	import {mapGetters} from 'vuex'
 
 	export default {
+		mounted() {
+			document.getElementById(0).classList.add("active-audio_item");
+		},
 		props: {
 			url: {
 				type: String
@@ -25,27 +34,15 @@
 				type: String
 			}
 		},
-		data: ()=>({
-			play: false
-		}),
 		computed: {
 			...mapGetters('tracks', {
-				currentTrack: 'currentTrack'
+				searchValue: 'searchValue'
 			})
 		},
 		methods: {
-			...mapMutations('tracks', {
-				changeCurrentTrack: 'changeCurrentTrack'
-			}),
-			playTrack() {
-				
-				if (this.url === this.currentTrack.url) {
-					document.getElementById("sound").pause()
-				}
-				else {
-					this.changeCurrentTrack(this.url);
-				} 
-			}
+			...mapActions('tracks', {
+				playTrack: 'playTrack'
+			})
 		}
 	}
 </script>
@@ -62,6 +59,8 @@
 			display: none
 		&-time
 			float: right
+		span
+			user-select: none
 		&:hover
 			cursor: pointer
 	.active-audio_item

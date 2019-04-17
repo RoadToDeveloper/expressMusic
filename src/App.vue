@@ -1,14 +1,15 @@
 <template>
 	<div id="app">
-		<app-controls	:audio="audio"
-		></app-controls>
+		
 		<app-search></app-search>
 		<app-audio	v-for="(track, index) in tracks"
 						:url="track.url"
 						:artist="track.artist"
 						:name="track.name"
 						:time="track.time"
+						:id="index"
 		></app-audio>
+		<app-controls></app-controls>
 	</div>
 </template>
 
@@ -20,9 +21,6 @@ import {mapGetters} from "vuex"
 
 
 export default {
-	data: ()=>({
-		audio: new Audio()
-	}),
 	computed: {
 		...mapGetters('tracks', {
 			tracks: 'tracks'
@@ -39,7 +37,8 @@ export default {
 <style lang="sass">
 #app	
 	height: 100vh
+	overflow: hidden
 	width: 80%
+	position: relative
 	margin: 0px auto
-	padding: 50px 0px 0px 0px
 </style>
