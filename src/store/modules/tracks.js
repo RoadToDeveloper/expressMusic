@@ -20,11 +20,39 @@ export default {
 				img: 'https://sun9-29.userapi.com/c855124/v855124720/1054a/WvkYIUsZyvg.jpg'
 			},
 			{
-				artist: 'Billie Eilish',
-				url: 'https://muzlo.me/get/music/20190202/muzlome_Billie_Eilish_-_bury_a_friend_61822134.mp3',
-				name: 'bury a friend',
-				time: '03:13',
-				img: 'https://sun9-29.userapi.com/c855124/v855124720/1054a/WvkYIUsZyvg.jpg'
+				artist: "Elvis Presley",
+				img: "https://muzlo.me/cover/song/47855189.jpg",
+				name: "Can't help falling in love",
+				time: "01:53",
+				url: "https://muzlo.me/get/music/20170830/muzlome_Elvis_Presley_-_Cant_help_falling_in_love_47855189.mp3"
+			},
+			{
+				artist: 'Sofia Reyes',
+				url: 'https://muzlo.me/get/music/20170905/muzlome_Sofia_Reyes_-_Dont_Mean_a_Thing_48263913.mp3',
+				name: 'Dont Mean a Thing',
+				time: '03:14',
+				img: 'https://muzlo.me/cover/song/48263913.jpg'
+			},
+			{
+				artist: "The Beatles",
+				img: "https://muzlo.me/cover/song/48043760.jpg",
+				name: "Hey Jude",
+				time: "07:05",
+				url: "https://muzlo.me/get/music/20170903/muzlome_The_Beatles_-_Hey_Jude_48043760.mp3",
+			},
+			{
+				artist: "The Beatles",
+				img: "https://muzlo.me/cover/song/48043737.jpg",
+				name: "Yesterday",
+				time: "02:05",
+				url: "https://muzlo.me/get/music/20170903/muzlome_The_Beatles_-_Yesterday_48043737.mp3"
+			},
+			{
+				artist: "Elvis Presley",
+				img: "https://muzlo.me/cover/song/47855189.jpg",
+				name: "Can't help falling in love",
+				time: "01:53",
+				url: "https://muzlo.me/get/music/20170830/muzlome_Elvis_Presley_-_Cant_help_falling_in_love_47855189.mp3"
 			},
 			{
 				artist: 'Billie Eilish',
@@ -34,109 +62,25 @@ export default {
 				img: 'https://sun9-29.userapi.com/c855124/v855124720/1054a/WvkYIUsZyvg.jpg'
 			},
 			{
-				artist: 'Billie Eilish',
-				url: 'https://muzlo.me/get/music/20190202/muzlome_Billie_Eilish_-_bury_a_friend_61822134.mp3',
-				name: 'bury a friend',
-				time: '03:13',
-				img: 'https://sun9-29.userapi.com/c855124/v855124720/1054a/WvkYIUsZyvg.jpg'
+				artist: 'Sofia Reyes',
+				url: 'https://muzlo.me/get/music/20170905/muzlome_Sofia_Reyes_-_Dont_Mean_a_Thing_48263913.mp3',
+				name: 'Dont Mean a Thing',
+				time: '03:14',
+				img: 'https://muzlo.me/cover/song/48263913.jpg'
 			},
 			{
-				artist: 'Billie Eilish',
-				url: 'https://muzlo.me/get/music/20190202/muzlome_Billie_Eilish_-_bury_a_friend_61822134.mp3',
-				name: 'bury a friend',
-				time: '03:13',
-				img: 'https://sun9-29.userapi.com/c855124/v855124720/1054a/WvkYIUsZyvg.jpg'
+				artist: "The Beatles",
+				img: "https://muzlo.me/cover/song/48043760.jpg",
+				name: "Hey Jude",
+				time: "07:05",
+				url: "https://muzlo.me/get/music/20170903/muzlome_The_Beatles_-_Hey_Jude_48043760.mp3",
 			},
 			{
-				artist: 'Billie Eilish',
-				url: 'https://muzlo.me/get/music/20190202/muzlome_Billie_Eilish_-_bury_a_friend_61822134.mp3',
-				name: 'bury a friend',
-				time: '03:13',
-				img: 'https://sun9-29.userapi.com/c855124/v855124720/1054a/WvkYIUsZyvg.jpg'
-			},
-			{
-				artist: 'Billie Eilish',
-				url: 'https://muzlo.me/get/music/20190202/muzlome_Billie_Eilish_-_bury_a_friend_61822134.mp3',
-				name: 'bury a friend',
-				time: '03:13',
-				img: 'https://sun9-29.userapi.com/c855124/v855124720/1054a/WvkYIUsZyvg.jpg'
-			},
-			{
-				artist: 'Billie Eilish',
-				url: 'https://muzlo.me/get/music/20190202/muzlome_Billie_Eilish_-_bury_a_friend_61822134.mp3',
-				name: 'bury a friend',
-				time: '03:13',
-				img: 'https://sun9-29.userapi.com/c855124/v855124720/1054a/WvkYIUsZyvg.jpg'
-			},
-			{
-				artist: 'Billie Eilish',
-				url: 'https://muzlo.me/get/music/20190202/muzlome_Billie_Eilish_-_bury_a_friend_61822134.mp3',
-				name: 'bury a friend',
-				time: '03:13',
-				img: 'https://sun9-29.userapi.com/c855124/v855124720/1054a/WvkYIUsZyvg.jpg'
-			},
-			{
-				artist: 'Billie Eilish',
-				url: 'https://muzlo.me/get/music/20190202/muzlome_Billie_Eilish_-_bury_a_friend_61822134.mp3',
-				name: 'bury a friend',
-				time: '03:13',
-				img: 'https://sun9-29.userapi.com/c855124/v855124720/1054a/WvkYIUsZyvg.jpg'
-			},
-			{
-				artist: 'Billie Eilish',
-				url: 'https://muzlo.me/get/music/20190202/muzlome_Billie_Eilish_-_bury_a_friend_61822134.mp3',
-				name: 'bury a friend',
-				time: '03:13',
-				img: 'https://sun9-29.userapi.com/c855124/v855124720/1054a/WvkYIUsZyvg.jpg'
-			},
-			{
-				artist: 'Billie Eilish',
-				url: 'https://muzlo.me/get/music/20190202/muzlome_Billie_Eilish_-_bury_a_friend_61822134.mp3',
-				name: 'bury a friend',
-				time: '03:13',
-				img: 'https://sun9-29.userapi.com/c855124/v855124720/1054a/WvkYIUsZyvg.jpg'
-			},
-			{
-				artist: 'Billie Eilish',
-				url: 'https://muzlo.me/get/music/20190202/muzlome_Billie_Eilish_-_bury_a_friend_61822134.mp3',
-				name: 'bury a friend',
-				time: '03:13',
-				img: 'https://sun9-29.userapi.com/c855124/v855124720/1054a/WvkYIUsZyvg.jpg'
-			},
-			{
-				artist: 'Billie Eilish',
-				url: 'https://muzlo.me/get/music/20190202/muzlome_Billie_Eilish_-_bury_a_friend_61822134.mp3',
-				name: 'bury a friend',
-				time: '03:13',
-				img: 'https://sun9-29.userapi.com/c855124/v855124720/1054a/WvkYIUsZyvg.jpg'
-			},
-			{
-				artist: 'Billie Eilish',
-				url: 'https://muzlo.me/get/music/20190202/muzlome_Billie_Eilish_-_bury_a_friend_61822134.mp3',
-				name: 'bury a friend',
-				time: '03:13',
-				img: 'https://sun9-29.userapi.com/c855124/v855124720/1054a/WvkYIUsZyvg.jpg'
-			},
-			{
-				artist: 'Billie Eilish',
-				url: 'https://muzlo.me/get/music/20190202/muzlome_Billie_Eilish_-_bury_a_friend_61822134.mp3',
-				name: 'bury a friend',
-				time: '03:13',
-				img: 'https://sun9-29.userapi.com/c855124/v855124720/1054a/WvkYIUsZyvg.jpg'
-			},
-			{
-				artist: 'Billie Eilish',
-				url: 'https://muzlo.me/get/music/20190202/muzlome_Billie_Eilish_-_bury_a_friend_61822134.mp3',
-				name: 'bury a friend',
-				time: '03:13',
-				img: 'https://sun9-29.userapi.com/c855124/v855124720/1054a/WvkYIUsZyvg.jpg'
-			},
-			{
-				artist: 'Billie Eilish',
-				url: 'https://muzlo.me/get/music/20190202/muzlome_Billie_Eilish_-_bury_a_friend_61822134.mp3',
-				name: 'bury a friend',
-				time: '03:13',
-				img: 'https://sun9-29.userapi.com/c855124/v855124720/1054a/WvkYIUsZyvg.jpg'
+				artist: "The Beatles",
+				img: "https://muzlo.me/cover/song/48043737.jpg",
+				name: "Yesterday",
+				time: "02:05",
+				url: "https://muzlo.me/get/music/20170903/muzlome_The_Beatles_-_Yesterday_48043737.mp3"
 			}
 		],
 		currentElemId: 0,
@@ -191,23 +135,28 @@ export default {
 		changeSearchValue(store, value) {
 			if (store.state.internetSearch) {
 				store.state.searchValue = value.toLowerCase();
-				if (value.length >= 3) store.dispatch('getInternetTracks', store.state.searchValue);				
+				if (value.length >= 3) {
+					document.getElementById("loader").style.opacity = 1;
+					store.dispatch('getInternetTracks', store.state.searchValue);
+					console.log(store.state.searchValue)
+				} 				
 			}
 			else {
 				if (value == null) store.state.searchValue = ''
 					else store.state.searchValue = value.toLowerCase();
-			}
-			
+			}			
 		},	
 		getInternetTracks(store) {
 			Vue.http.get(`http://80.78.248.37/?query=${store.state.searchValue}`)
 				.then(response => response.json())
 	         .then(data => {
-	            console.log(data)
+	         	console.log(data)
+	         	document.getElementById("loader").style.opacity = 0;
 	            if (data.length == 0) return;
 	            else store.state.tracks = data; 
 	         })
 	         .catch((error) => {
+	         	document.getElementById("loader").style.opacity = 0;
 	            return 0;
 	         })
 		},
@@ -239,14 +188,13 @@ export default {
 			} 
 		},
 		changeTrack(store, data) {
-
 			if (store.state.currentTrack.src.length != 0) {
 				let newId;
 				if (data.type == 'next') {
-					(data.id == store.state.tracks.length - 1) ? newId = 0 : newId = parseInt(data.id + 1)
+					(data.id == store.state.tracks.length - 1) ? newId = 0 : newId = parseInt(data.id) + 1
 				} 
 					else {
-						(data.id == 0) ? newId = store.state.tracks.length - 1 : newId = parseInt(data.id - 1)
+						(data.id == 0) ? newId = parseInt(store.state.tracks.length) - 1 : newId = parseInt(data.id) - 1
 					} 
 				store.commit('changeCurrentTrack', store.state.tracks[newId].url);
 				store.state.currentTrack.play();
@@ -255,7 +203,6 @@ export default {
 				let items = document.getElementsByClassName("audio_item");
 				store.commit('removeActiveClasses');
 				document.getElementById(newId).classList.add("active-audio_item");
-				// console.log(document.getElementById(newId).firstChild.children[1].children[1])
 				document.getElementById(newId).firstChild.children[1].children[0].style.display = "inline";
 				document.getElementById(newId).firstChild.children[1].children[1].style.display = "none";
 			}			

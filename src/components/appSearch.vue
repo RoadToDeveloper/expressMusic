@@ -1,6 +1,7 @@
 <template>
 	<div>
-		<input @input="changeSearchValue($event.target.value)" type="search" placeholder="Например: AC/DC">
+		<input @input="changeSearchValue($event.target.value)" type="text" placeholder="Например: AC/DC">
+		<span id="loader"></span>
 	</div>
 	
 </template>
@@ -21,8 +22,13 @@
 	div
 		padding: 0px 20px
 		margin-bottom: 10px
+		max-width: 100%
+		display: flex
+		align-items: center
 		input
+			max-width: 100%
 			width: 100%
+			box-sizing: border-box
 			margin-top: 0px
 			border-radius: 15px
 			padding: 8px 15px		
@@ -42,5 +48,21 @@
 				cursor: pointer
 			&:focus
 				border-color: rgba(255,216,0,0.6)
+		#loader
+			position: absolute
+			right: 40px
+			border: 3px solid #fff
+			border-radius: 50%
+			border-right-color: rgba(255, 255, 255, 0)
+			border-bottom-color: rgba(255, 255, 255, 0)
+			width: 15px
+			height: 15px
+			animation: rotateLoader 0.7s linear infinite
+			opacity: 0
+		@keyframes rotateLoader
+			0%
+				transform: rotate(0deg)
+			100%
+				transform: rotate(1turn)
 			
 </style>

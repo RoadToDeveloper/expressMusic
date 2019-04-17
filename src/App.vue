@@ -128,6 +128,7 @@ export default {
 	#app h2
 		text-align: center
 		margin-bottom: 10px
+		padding: 0px
 	#app .app-switch
 		position: relative
 		width: 100%

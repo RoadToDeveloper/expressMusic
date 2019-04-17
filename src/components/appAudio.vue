@@ -67,6 +67,7 @@
 		color: rgba(255, 255, 255, 0.7)
 		padding: 6px 15px
 		background-color: transparent
+		border: 2px solid transparent
 		transition: all 0s
 		border-radius: 4px
 		margin-bottom: 3px
@@ -108,6 +109,7 @@
 				font-weight: 600
 		&:hover
 			cursor: pointer
+			border-color: rgba(0, 0, 0, 0.2)
 	.active-audio_item
 		transition: all 0.4s
 		background-color: rgba(0, 0, 0, 0.2)

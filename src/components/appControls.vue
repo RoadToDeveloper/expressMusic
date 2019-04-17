@@ -245,6 +245,8 @@
 					background-color: rgba(255,216,0,0.6)
 				&-number
 					position: absolute
+					user-select: none
+					pointer-events: none
 					width: 35px
 					right: 5px
 					display: flex

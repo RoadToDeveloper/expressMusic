@@ -1,29 +1,5 @@
-# audiopleer
+#Express.music
 
-## Project setup
-```
-npm install
-```
+![The result](public/img/banner.jpg)
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Run your tests
-```
-npm run test
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+Приложение доступно на [music.clbet.ru](http://music.clbet.ru)
