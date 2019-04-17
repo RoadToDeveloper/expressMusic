@@ -22,13 +22,15 @@
 				<p class="controls-info-names-artist">{{ tracks[currentElemId].artist }}</p>
 			</div>
 		</div>
-				
-		<div class="controls-volume_wrapper" id="volume" @click="changeVolume">
+			
+		<i class="controls-volume_icon fas fa-volume-up"></i>	
+		<div class="controls-volume_wrapper" id="volume" @click="changeVolume">			
 			<div class="controls-volume_wrapper-volume">
 				<div class="controls-volume_wrapper-volume-progress" id="volume_progress"></div>
 			</div>			
 		</div>
 
+		
 		<div class="controls-info-time_wrapper" id="time" @click="changeTrackTime">
 			<div class="controls-info-time_wrapper-time">
 				<div class="controls-info-time_wrapper-time-progress" id="time_progress"></div>	
@@ -39,6 +41,7 @@
 				</div>
 			</div>						
 		</div>
+		
 	</div>
 </template>
 
@@ -48,9 +51,6 @@
 	import {mapActions} from 'vuex'
 
 	export default {
-		created() {
-			this.currentTrack.src = this.tracks[0].url;
-		},
 		mounted() {
 			this.currentTrack.addEventListener("timeupdate", ()=>{
 				this.minutes = Math.floor(this.currentTrack.currentTime / 60);
@@ -86,12 +86,16 @@
 			playTrack() {
 				if (this.currentTrack.src.length != 0) {
 					this.currentTrack.play();
+					document.getElementById(this.currentElemId).firstChild.children[1].children[0].style.display = "inline";
+					document.getElementById(this.currentElemId).firstChild.children[1].children[1].style.display = "none";
 					this.changePause();
 				}				
 			},
 			pauseTrack() {
 				this.currentTrack.pause();
 				this.changePause();
+				document.getElementById(this.currentElemId).firstChild.children[1].children[0].style.display = "none";
+				document.getElementById(this.currentElemId).firstChild.children[1].children[1].style.display = "inline";
 			},
 			changeTrackTime(e) {
 				let width = document.getElementById("time").offsetWidth;
@@ -133,7 +137,8 @@
 			display: none
 		&-btn
 			display: inline-flex
-			width: 8%
+			width: 10%
+			padding-right: 15px
 			justify-content: space-between
 			i
 				font-size: 20px
@@ -165,9 +170,24 @@
 					font-weight: 600
 					font-size: 14px
 					margin-bottom: 5px
+		&-volume_icon
+			font-size: 20px
+			color: rgba(255, 255, 255, 0.7)
+			margin-top: 1px
+			padding: 5px
 		&-volume_wrapper
-			width: 100%
 			padding: 15px 0px 15px 0px
+			display: flex
+			align-items: center
+			position: relative
+			width: 13%
+			display: inline-flex
+			&:hover
+				cursor: pointer
+			i
+				color: rgba(255, 255, 255, 0.7)
+				font-size: 20px
+				margin-right: 10px
 			&-runner
 				position: absolute
 				bottom: -15px
@@ -191,8 +211,8 @@
 					left: 18px			
 			&-volume
 				border-radius: 7px
-				height: 3px
-				background-color: rgba(255, 255, 255, 0.8)
+				height: 7px
+				background-color: rgba(255, 255, 255, 0.2)
 				border: none
 				width: 100%
 				position: relative				
@@ -202,18 +222,10 @@
 					position: absolute
 					top: 0px
 					left: 0px
-					background-color: #5181b8
-					width: 0%
+					background-color: rgba(255,216,0,0.6)
 					display: inline-block
 					height: 100%
-		&-volume_wrapper
-			position: relative
-			width: 10%
-			display: inline-flex
-			&:hover
-				cursor: pointer
-			&-volume-progress
-				width: 100%
+					width: 100%
 		&-info-time_wrapper	
 			width: 100%
 			position: absolute
@@ -252,6 +264,26 @@
 					span
 						width: 7px
 						text-align: center
-
-				
+@media only screen and (max-width : 992px)
+	.controls-btn
+		min-width: 130px
+	.controls-volume_wrapper
+		min-width: 100px
+@media only screen and (max-width : 650px)
+	.controls
+		flex-wrap: wrap
+		justify-content: flex-start
+		padding: 15px
+		&-btn
+			min-width: 100%
+			justify-content: center	
+			align-items: center
+			i:not(:last-of-type)
+				margin-right: 25px
+			i:nth-of-type(2)
+				font-size: 26px
+		&-info
+			width: auto
+		&-volume_wrapper, &-volume_icon
+			display: none
 </style>

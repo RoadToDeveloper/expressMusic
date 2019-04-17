@@ -1,6 +1,9 @@
+import Vue from 'vue';
+
 export default {
 	namespaced: true,
 	state: {
+		defaultTracks: [],
 		tracks: [
 			{
 				artist: 'Billie Eilish',
@@ -139,7 +142,8 @@ export default {
 		currentElemId: 0,
 		currentTrack: new Audio(),
 		pause: true,
-		searchValue: ''
+		searchValue: '',
+		internetSearch: false
 	},
 	getters: {
 		tracks(state) {
@@ -156,6 +160,9 @@ export default {
 		},
 		searchValue(state) {
 			return state.searchValue;
+		},
+		internetSearch(state) {
+			return state.internetSearch;
 		}
 	},
 	mutations: {
@@ -170,36 +177,69 @@ export default {
 			for (let i = 0; i < items.length; i++) {
 				items[i].classList.remove("active-audio_item")
 			}			
-		},
-		changeSearchValue(state, value) {
-			if (value == null) state.searchValue = ''
-				else state.searchValue = value.toLowerCase();
-		}
+		}			
 	},
-	actions: {
-		playTrack(store, data) {			
+	actions: {	
+		changeInternetSearchValue(store, value) {
+			store.state.internetSearch = value;
+			if (store.state.internetSearch) {
+				store.state.defaultTracks = store.state.tracks;
+				if (store.state.searchValue.length >= 3) store.dispatch('getInternetTracks', store.state.searchValue);
+			} 
+			else store.state.tracks = store.state.defaultTracks
+		},
+		changeSearchValue(store, value) {
+			if (store.state.internetSearch) {
+				store.state.searchValue = value.toLowerCase();
+				if (value.length >= 3) store.dispatch('getInternetTracks', store.state.searchValue);				
+			}
+			else {
+				if (value == null) store.state.searchValue = ''
+					else store.state.searchValue = value.toLowerCase();
+			}
+			
+		},	
+		getInternetTracks(store) {
+			Vue.http.get(`http://80.78.248.37/?query=${store.state.searchValue}`)
+				.then(response => response.json())
+	         .then(data => {
+	            console.log(data)
+	            if (data.length == 0) return;
+	            else store.state.tracks = data; 
+	         })
+	         .catch((error) => {
+	            return 0;
+	         })
+		},
+		playTrack(store, data) {		
 			if (data.elem.id === store.state.currentElemId) {
 				if (store.state.currentTrack.paused) {
 					store.state.currentTrack.play();
 					store.state.pause = false;
+					data.elem.firstChild.children[1].children[0].style.display = "inline";
+					data.elem.firstChild.children[1].children[1].style.display = "none";
 				}
 				else {
 					store.state.currentTrack.pause();
 					store.state.pause = true;
+					data.elem.firstChild.children[1].children[1].style.display = "inline";
+					data.elem.firstChild.children[1].children[0].style.display = "none";
 				} 
 				data.elem.classList.add("active-audio_item")
 			}
 			else {
 				store.commit('changeCurrentTrack', data.url);
+				data.elem.firstChild.children[1].children[0].style.display = "inline";
+				data.elem.firstChild.children[1].children[1].style.display = "none";
 				store.state.currentTrack.play();
 				store.state.pause = false;
 				store.state.currentElemId = data.elem.id;
 				store.commit('removeActiveClasses');
-				data.elem.classList.add("active-audio_item")
-				
+				data.elem.classList.add("active-audio_item")				
 			} 
 		},
 		changeTrack(store, data) {
+
 			if (store.state.currentTrack.src.length != 0) {
 				let newId;
 				if (data.type == 'next') {
@@ -215,6 +255,9 @@ export default {
 				let items = document.getElementsByClassName("audio_item");
 				store.commit('removeActiveClasses');
 				document.getElementById(newId).classList.add("active-audio_item");
+				// console.log(document.getElementById(newId).firstChild.children[1].children[1])
+				document.getElementById(newId).firstChild.children[1].children[0].style.display = "inline";
+				document.getElementById(newId).firstChild.children[1].children[1].style.display = "none";
 			}			
 		}
 	}

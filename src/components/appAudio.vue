@@ -6,7 +6,14 @@
 				elem: $refs.audio_item
 			})" 
 	>		
-		<img :src="img" class="audio_item-img" alt="">
+		<div class="audio_item-img_wrapper">
+			<img :src="img" class="audio_item-img_wrapper-img" alt="">
+			<span class="audio_item-img_wrapper-icon" id="status">
+				<i class="fas fa-pause"></i>
+				<i class="fas fa-play"></i>
+			</span>
+		</div>
+		
 		<p class="audio_item-names">
 			<span class="audio_item-names-track">{{ name }}</span>
 			<span class="audio_item-names-artist">{{ artist }}</span>			
@@ -20,9 +27,11 @@
 	import {mapGetters} from 'vuex'
 
 	export default {
-		mounted() {
-			document.getElementById(0).classList.add("active-audio_item");
-		},
+		// mounted() {
+		// 	setTimeout(()=>{
+		// 		document.getElementById(0).classList.add("active-audio_item");
+		// 	}, 100)			
+		// },
 		props: {
 			url: {
 				type: String
@@ -67,8 +76,23 @@
 		user-select: none
 		font-size: 12px
 		width: 100%
-		&-img
-			width: 45px
+		max-height: fit-content
+		&-img_wrapper
+			position: relative
+			&-img
+				width: 45px
+			&-icon
+				position: absolute
+				height: 100%
+				width: 100%
+				top: 0px
+				display: none
+				left: 0px
+				background-color: rgba(0, 0, 0, 0.5)
+				align-items: center
+				justify-content: center
+				i
+					font-size: 18px
 		&-time
 			position: absolute
 			right: 15px
@@ -87,5 +111,17 @@
 	.active-audio_item
 		transition: all 0.4s
 		background-color: rgba(0, 0, 0, 0.2)
-
+		#status
+			display: flex
+			i:first-of-type
+				display: none
+@media only screen and (max-width : 450px)
+	.audio_item
+		&-names
+			flex: 1
+		&-time
+			position: relative
+			width: 40px
+			text-align: right
+			right: 0px
 </style>
