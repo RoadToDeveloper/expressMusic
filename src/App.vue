@@ -1,28 +1,45 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+	<div id="app">
+		<app-controls	:audio="audio"
+		></app-controls>
+		<app-search></app-search>
+		<app-audio	v-for="(track, index) in tracks"
+						:url="track.url"
+						:artist="track.artist"
+						:name="track.name"
+						:time="track.time"
+		></app-audio>
+	</div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import appControls from "./components/appControls.vue"
+import appAudio from "./components/appAudio.vue"
+import appSearch from "./components/appSearch.vue"
+import {mapGetters} from "vuex"
+
 
 export default {
-  name: 'app',
-  components: {
-    HelloWorld
-  }
+	data: ()=>({
+		audio: new Audio()
+	}),
+	computed: {
+		...mapGetters('tracks', {
+			tracks: 'tracks'
+		})
+	},
+ 	components: {
+ 		appControls: appControls,
+ 		appAudio: appAudio,
+ 		appSearch: appSearch
+ 	}
 }
 </script>
 
-<style lang="scss">
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style lang="sass">
+#app	
+	height: 100vh
+	width: 80%
+	margin: 0px auto
+	padding: 50px 0px 0px 0px
 </style>
