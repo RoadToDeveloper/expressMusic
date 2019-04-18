@@ -10,7 +10,7 @@
 		</div>
 		<app-search></app-search>
 		<div class="audio_wrapper">
-			<app-audio	v-for="(track, index) in tracks"
+			<app-audio	v-for="(track, index) in searchingTracks"
 							:url="track.url"
 							:artist="track.artist"
 							:name="track.name"
@@ -34,7 +34,7 @@ import {mapActions} from "vuex"
 export default {
 	computed: {
 		...mapGetters('tracks', {
-			tracks: 'tracks'
+			searchingTracks: 'searchingTracks'
 		})
 	},
 	methods: {
