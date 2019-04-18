@@ -1,6 +1,6 @@
 <template>
 	<div 	class="audio_item" ref="audio_item" 
-			v-if="artist.toLowerCase().indexOf(searchValue) != -1 || name.toLowerCase().indexOf(searchValue) != -1"
+			v-show="artist.toLowerCase().indexOf(searchValue) != -1 || name.toLowerCase().indexOf(searchValue) != -1"
 			@click="playTrack({
 				url: url,
 				elem: $refs.audio_item

@@ -84,6 +84,7 @@ export default {
 			}
 		],
 		currentElemId: 0,
+		currentData: {},
 		currentTrack: new Audio(),
 		pause: true,
 		searchValue: '',
@@ -107,6 +108,9 @@ export default {
 		},
 		internetSearch(state) {
 			return state.internetSearch;
+		},
+		currentData(state) {
+			return state.currentData;
 		}
 	},
 	mutations: {
@@ -130,16 +134,19 @@ export default {
 				store.state.defaultTracks = store.state.tracks;
 				if (store.state.searchValue.length >= 3) store.dispatch('getInternetTracks', store.state.searchValue);
 			} 
-			else store.state.tracks = store.state.defaultTracks
+			else store.state.tracks = store.state.defaultTracks;
+			store.commit('removeActiveClasses');
 		},
 		changeSearchValue(store, value) {
 			if (store.state.internetSearch) {
 				store.state.searchValue = value.toLowerCase();
 				if (value.length >= 3) {
-					document.getElementById("loader").style.opacity = 1;
-					store.dispatch('getInternetTracks', store.state.searchValue);
-					console.log(store.state.searchValue)
-				} 				
+					document.getElementById("loader").style.opacity = 1;	
+					//делаем задержку на запрос, чтобы не было конфликтов с респонсом и заполнением массива
+					setTimeout(()=>{
+						store.dispatch('getInternetTracks', store.state.searchValue);	
+					}, 500)																			
+				} 			
 			}
 			else {
 				if (value == null) store.state.searchValue = ''
@@ -160,8 +167,14 @@ export default {
 	            return 0;
 	         })
 		},
-		playTrack(store, data) {		
-			if (data.elem.id === store.state.currentElemId) {
+		playTrack(store, data) {
+			//id треков из интернета совпдает с изначальным массивом, поэтому добавлено условие,
+			//гарантирующее, что если, например, играет первый трек из локального массива, то при клике
+			//на первый трек из интернет массива произойдет переключение, а не постановка на паузу/воспроизведение
+			
+			if (data.elem.id == store.state.currentElemId && store.state.currentData.name == 
+				store.state.tracks[data.elem.id].name) {
+
 				if (store.state.currentTrack.paused) {
 					store.state.currentTrack.play();
 					store.state.pause = false;
@@ -176,6 +189,7 @@ export default {
 				} 
 				data.elem.classList.add("active-audio_item")
 			}
+			//иначе меняем текущий трек
 			else {
 				store.commit('changeCurrentTrack', data.url);
 				data.elem.firstChild.children[1].children[0].style.display = "inline";
@@ -183,16 +197,24 @@ export default {
 				store.state.currentTrack.play();
 				store.state.pause = false;
 				store.state.currentElemId = data.elem.id;
+				store.state.currentData = store.state.tracks[data.elem.id];
 				store.commit('removeActiveClasses');
 				data.elem.classList.add("active-audio_item")				
 			} 
 		},
 		changeTrack(store, data) {
-			if (store.state.currentTrack.src.length != 0) {
+			//если сейчас нет текущего трека или он не подходит к поисковому запросу, то игнорируем нажатия
+			if (store.state.currentTrack.src.length != 0 && 
+				(store.state.currentData.artist.toLowerCase().indexOf(store.state.searchValue) != -1 
+				|| store.state.currentData.name.toLowerCase().indexOf(store.state.searchValue) != -1)) {
+
 				let newId;
+				//произошел клик по кнопке "далее"
 				if (data.type == 'next') {
+					//если текущий трек последний в списке - идем в начало массива, иначе берем следующий элемент
 					(data.id == store.state.tracks.length - 1) ? newId = 0 : newId = parseInt(data.id) + 1
 				} 
+					//тоже самое для кнопки "предыдущий"
 					else {
 						(data.id == 0) ? newId = parseInt(store.state.tracks.length) - 1 : newId = parseInt(data.id) - 1
 					} 
@@ -200,7 +222,7 @@ export default {
 				store.state.currentTrack.play();
 				store.state.pause = false;
 				store.state.currentElemId = newId;
-				let items = document.getElementsByClassName("audio_item");
+				store.state.currentData = store.state.tracks[newId];
 				store.commit('removeActiveClasses');
 				document.getElementById(newId).classList.add("active-audio_item");
 				document.getElementById(newId).firstChild.children[1].children[0].style.display = "inline";

@@ -16,10 +16,10 @@
 		</div>
 		
 		<div class="controls-info">
-			<img class="controls-info-img" :src="tracks[currentElemId].img" alt="">			
+			<img class="controls-info-img" :src="currentData.img" alt="">			
 			<div class="controls-info-names" v-if="currentElemId != null">
-				<p class="controls-info-names-track">{{ tracks[currentElemId].name }}</p>
-				<p class="controls-info-names-artist">{{ tracks[currentElemId].artist }}</p>
+				<p class="controls-info-names-track">{{ currentData.name }}</p>
+				<p class="controls-info-names-artist">{{ currentData.artist }}</p>
 			</div>
 		</div>
 			
@@ -73,7 +73,8 @@
 				currentTrack: 'currentTrack',
 				pause: 'pause',
 				currentElemId: 'currentElemId',
-				tracks: 'tracks'
+				tracks: 'tracks',
+				currentData: 'currentData'
 			})
 		},
 		methods: {
