@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<input @input="changeSearchValue($event.target.value)" type="text" placeholder="Например: AC/DC">
+		<input @input="changeSearchValue($event.target.value.toLowerCase())" type="text" placeholder="Например: AC/DC">
 		<span id="loader"></span>
 	</div>
 	

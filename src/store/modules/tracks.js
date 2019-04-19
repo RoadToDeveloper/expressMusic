@@ -105,7 +105,7 @@ export default {
 			return state.currentTrack;
 		},
 		currentElemId(state) {
-			return state.currentElemId
+			return state.currentElemId;
 		},
 		pause(state) {
 			return state.pause;
@@ -124,29 +124,55 @@ export default {
 		changeCurrentTrack(state, url) {
 			state.currentTrack.src = url;
 		},
-		changePause(state) {
-			state.pause = !state.pause
+		changePause(state, val) {
+			if (val === null) state.pause = !state.pause
+				else state.pause = val;
+			
 		},
-		removeActiveClasses(state) {
+		removeActiveClasses() {
 			let items = document.getElementsByClassName("audio_item");
 			for (let i = 0; i < items.length; i++) {
-				items[i].classList.remove("active-audio_item")
+				items[i].classList.remove("active-audio_item");
 			}			
-		}			
+		},
+		playTrack(state) {
+			state.currentTrack.play();
+		},
+		pauseTrack(state) {
+			state.currentTrack.pause();
+		},
+		changeInternetSearch(state, value) {
+			state.internetSearch = value;
+		},
+		changeSearchValue(state, value) {
+			state.searchValue = value;
+		},
+		searchingTracksPush(state, elem) {
+			state.searchingTracks.push(elem);
+		},
+		changeDefaultTracks(state, data) {
+			state.defaultTracks = data;
+		},
+		changeSearchingTracks(state, data) {
+			state.searchingTracks = data;
+		},
+		changeCurrentElemId(state, value) {
+			state.currentElemId = value;
+		}	
 	},
 	actions: {	
 		changeInternetSearchValue(store, value) {
-			store.state.internetSearch = value;
+			store.commit("changeInternetSearch", value);			
 			if (store.state.internetSearch) {
-				store.state.defaultTracks = store.state.searchingTracks;
+				store.commit("changeDefaultTracks", store.state.searchingTracks);
 				if (store.state.searchValue.length >= 3) store.dispatch('getInternetTracks', store.state.searchValue);
 			} 
-			else store.state.searchingTracks = store.state.defaultTracks;
-			store.commit('removeActiveClasses');
+			else store.commit("changeSearchingTracks", store.state.defaultTracks);			
+			store.commit("removeActiveClasses");
 		},
 		changeSearchValue(store, value) {
 			if (store.state.internetSearch) {
-				store.state.searchValue = value.toLowerCase();
+				store.commit("changeSearchValue", value);
 				if (value.length >= 3) {
 					document.getElementById("loader").style.opacity = 1;	
 					//делаем задержку на запрос, чтобы не было конфликтов с респонсом и заполнением массива
@@ -157,17 +183,17 @@ export default {
 			}
 			else {
 				if (value == null) {
-					store.state.searchValue = '';
-					store.state.searchingTracks = store.state.tracks;
+					store.commit("changeSearchValue", '');
+					store.commit("changeSearchingTracks", store.state.tracks);
 				} 
 					else {
-						store.state.searchValue = value.toLowerCase();
-						store.state.searchingTracks = [];
+						store.commit("changeSearchValue", value);
+						store.commit("changeSearchingTracks", []);
 						for (let i = 0; i < store.state.tracks.length; i++) {
 							if (store.state.tracks[i].artist.toLowerCase().indexOf(store.state.searchValue) != -1 
 								|| store.state.tracks[i].name.toLowerCase().indexOf(store.state.searchValue) != -1)
 							{
-								store.state.searchingTracks.push(store.state.tracks[i]);
+								store.commit("searchingTracksPush", store.state.tracks[i]);
 							}
 						}
 					} 
@@ -176,15 +202,15 @@ export default {
 		getInternetTracks(store) {
 			Vue.http.get(`http://80.78.248.37/?query=${store.state.searchValue}`)
 				.then(response => response.json())
-	         .then(data => {
-	         	document.getElementById("loader").style.opacity = 0;
-	            if (data.length == 0) return;
-	            else store.state.searchingTracks = data; 
-	         })
-	         .catch((error) => {
-	         	document.getElementById("loader").style.opacity = 0;
-	            return 0;
-	         })
+				.then(data => {
+					document.getElementById("loader").style.opacity = 0;
+					if (data.length == 0) return;
+					else store.commit("changeSearchingTracks", data); 
+				})
+				.catch(() => {
+					document.getElementById("loader").style.opacity = 0;
+					return 0;
+				})
 		},
 		playTrack(store, data) {
 			//id треков из интернета совпдает с изначальным массивом, поэтому добавлено условие,
@@ -195,13 +221,13 @@ export default {
 				store.getters.searchingTracks[data.elem.id].name) {
 
 				if (store.state.currentTrack.paused) {
-					store.state.currentTrack.play();
+					store.commit('playTrack');
 					store.state.pause = false;
 					data.elem.firstChild.children[1].children[0].style.display = "inline";
 					data.elem.firstChild.children[1].children[1].style.display = "none";
 				}
 				else {
-					store.state.currentTrack.pause();
+					store.commit('pauseTrack');
 					store.state.pause = true;
 					data.elem.firstChild.children[1].children[1].style.display = "inline";
 					data.elem.firstChild.children[1].children[0].style.display = "none";
@@ -213,11 +239,11 @@ export default {
 				store.commit('changeCurrentTrack', data.url);
 				data.elem.firstChild.children[1].children[0].style.display = "inline";
 				data.elem.firstChild.children[1].children[1].style.display = "none";
-				store.state.currentTrack.play();
-				store.state.pause = false;
-				store.state.currentElemId = data.elem.id;
-				store.state.currentData = store.getters.searchingTracks[data.elem.id];
+				store.commit('playTrack');
+				store.commit('changePause', false);	
+				store.commit("changeCurrentElemId", data.elem.id);
 				store.commit('removeActiveClasses');
+				store.state.currentData = store.getters.searchingTracks[data.elem.id];				
 				data.elem.classList.add("active-audio_item")				
 			} 
 		},
@@ -237,12 +263,13 @@ export default {
 					else {
 						(data.id == 0) ? newId = parseInt(store.state.searchingTracks.length) - 1 : newId = parseInt(data.id) - 1
 					} 
-				store.commit('changeCurrentTrack', store.state.searchingTracks[newId].url);
-				store.state.currentTrack.play();
-				store.state.pause = false;
-				store.state.currentElemId = newId;
-				store.state.currentData = store.state.searchingTracks[newId];
+				store.state.currentData = store.getters.searchingTracks[newId];	
+				store.commit("changeCurrentElemId", newId);
+				store.commit('changeCurrentTrack', store.getters.searchingTracks[newId].url);
+				store.commit('playTrack');				
 				store.commit('removeActiveClasses');
+				store.commit('changePause', false);			
+							
 				document.getElementById(newId).classList.add("active-audio_item");
 				document.getElementById(newId).firstChild.children[1].children[0].style.display = "inline";
 				document.getElementById(newId).firstChild.children[1].children[1].style.display = "none";

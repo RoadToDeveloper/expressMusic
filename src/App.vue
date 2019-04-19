@@ -17,6 +17,7 @@
 							:time="track.time"
 							:img="track.img"
 							:id="index"
+							:key="index"
 			></app-audio>
 		</div>		
 		<app-controls></app-controls>
@@ -42,11 +43,11 @@ export default {
 			changeInternetSearchValue: 'changeInternetSearchValue'
 		})
 	},
- 	components: {
- 		appControls: appControls,
- 		appAudio: appAudio,
- 		appSearch: appSearch
- 	}
+	components: {
+		appControls: appControls,
+		appAudio: appAudio,
+		appSearch: appSearch
+	}
 }
 </script>
 

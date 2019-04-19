@@ -89,12 +89,12 @@
 					this.currentTrack.play();
 					document.getElementById(this.currentElemId).firstChild.children[1].children[0].style.display = "inline";
 					document.getElementById(this.currentElemId).firstChild.children[1].children[1].style.display = "none";
-					this.changePause();
+					this.changePause(null);
 				}				
 			},
 			pauseTrack() {
 				this.currentTrack.pause();
-				this.changePause();
+				this.changePause(null);
 				document.getElementById(this.currentElemId).firstChild.children[1].children[0].style.display = "none";
 				document.getElementById(this.currentElemId).firstChild.children[1].children[1].style.display = "inline";
 			},
@@ -206,7 +206,6 @@
 					position: absolute
 					width: 4px
 					height: 4px
-					border
 					background-color: red
 					top: -4px
 					left: 18px			
